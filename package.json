@@ -1,0 +1,36 @@
+{
+  "name": "navy-admiral-slack-notifier",
+  "description": "Send notifications to Slack after an Order is successfully executed",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:microadam/navy-admiral-slack-notifier"
+  },
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org"
+  },
+  "scripts": {
+    "lint": "./node_modules/.bin/jshint . --reporter=./node_modules/jshint-full-path/index.js",
+    "jscs": "./node_modules/.bin/jscs .",
+    "pretest": "npm run-script lint && npm run-script jscs",
+    "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --recursive -R spec",
+    "posttest": "./node_modules/.bin/istanbul check-coverage && rm -rf coverage"
+  },
+  "dependencies": {
+    "request": "^2.37.0"
+  },
+  "devDependencies": {
+    "istanbul": "~0.2.3",
+    "jscs": "~1.3",
+    "jshint": "~2.4.1",
+    "jshint-full-path": "~1.1.1",
+    "mocha": "~1.17.0",
+    "rewire": "^2.1.0",
+    "sinon": "^1.10.3"
+  },
+  "extensions": {
+    "basic": {
+      "slack-notifier": "./index"
+    }
+  }
+}
